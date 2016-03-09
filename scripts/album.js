@@ -77,6 +77,8 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+    window.onload = function() {
+    setCurrentAlbum(albumPicasso);
     // save a list of the albums
     var albums = [albumPicasso, albumMarconi, albumMonet];
 
@@ -95,16 +97,6 @@ window.onload = function() {
         } 
         setCurrentAlbum(albums[count]);
         // if we reach the last album, loop back to the first album
-
     });
-    
-    /*var count = 0
-    images = [albumPicasso, albumMarconi, albumMonet];
-    albumImage.addEventListener('click', function(event) {
-        setcurrentAlbum(album);
-        count++;
-        if (count >= images.length) {
-            count = 0;
-        }   
-    });*/
+};
 };
