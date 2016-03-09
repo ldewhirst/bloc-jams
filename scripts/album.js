@@ -30,16 +30,31 @@ var albumMarconi = {
     ]
 };
 
+var albumMonet = {
+    title: 'Sunrise',
+    artist: 'Claude Monet',
+    label: 'Impressionism',
+    year: '1872',
+    albumArtUrl: 'assets/images/album_covers/10.png',
+    songs: [
+        { title: 'Paris', duration: '2:03' },
+        { title: 'London', duraton: '3:23' },
+        { title: 'Rome', duration: '2:34' },
+        { title: 'Vienna', duration: '4:43' },
+        { title: 'Prague', duraiton: '2:41' }
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
-    var template = 
-        '<class="album-view-song-item>'
-      + '  <td class="song-item-number">' + songNumber + '</td>'
-      + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + songLength + '</td>'
-      + '</tr>'
-    ;
-    
-    return template;
+ var template =
+    '<tr class="album-view-song-item">'
+  + '  <td class="song-item-number">' + songNumber + '</td>'
+  + '  <td class="song-item-title">' + songName + '</td>'
+  + '  <td class="song-item-duration">' + songLength + '</td>'
+  + '</tr>'
+  ;
+
+ return template;
 };
 
 var setCurrentAlbum = function(album) {
@@ -47,13 +62,12 @@ var setCurrentAlbum = function(album) {
     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
     var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = documet.getElementsByClassName('album-view-song-list')[0];
+    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
     
-    albumTitle.fistChild.nodeValue = album.title;
+    albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
     albumImage.setAttribute('src', album.albumArtUrl);
-    
     albumSongList.innerHTML = '';
     
     for (var i = 0; i < album.songs.length; i++) {
@@ -63,4 +77,34 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+    // save a list of the albums
+    var albums = [albumPicasso, albumMarconi, albumMonet];
+
+    // create a variable and target the album image element
+    var albumImage = document.getElementsByClassName('album-cover-art')[0];
+    
+    // keep track of the index of the current album
+    var count = 0;
+
+    // make the element respond to a click
+    albumImage.addEventListener('click', function(event) {
+        // toggle to the next album
+        count++;
+        if (count >= albums.length) {
+            count = 0;
+        } 
+        setCurrentAlbum(albums[count]);
+        // if we reach the last album, loop back to the first album
+
+    });
+    
+    /*var count = 0
+    images = [albumPicasso, albumMarconi, albumMonet];
+    albumImage.addEventListener('click', function(event) {
+        setcurrentAlbum(album);
+        count++;
+        if (count >= images.length) {
+            count = 0;
+        }   
+    });*/
 };
