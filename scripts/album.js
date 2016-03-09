@@ -77,26 +77,4 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
-    window.onload = function() {
-    setCurrentAlbum(albumPicasso);
-    // save a list of the albums
-    var albums = [albumPicasso, albumMarconi, albumMonet];
-
-    // create a variable and target the album image element
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    
-    // keep track of the index of the current album
-    var count = 0;
-
-    // make the element respond to a click
-    albumImage.addEventListener('click', function(event) {
-        // toggle to the next album
-        count++;
-        if (count >= albums.length) {
-            count = 0;
-        } 
-        setCurrentAlbum(albums[count]);
-        // if we reach the last album, loop back to the first album
-    });
-};
 };
