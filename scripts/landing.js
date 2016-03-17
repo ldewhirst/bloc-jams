@@ -1,7 +1,6 @@
-var pointsArray = document.getElementsByClassName('point');
-
 var animatePoints = function() {
     var revealPoint = function() {
+        console.log(this);
         $(this).css({
             opacity: 1,
             transform: 'scaleX(1) translateY(0)'
@@ -22,10 +21,4 @@ $(window).load(function() {
             animatePoints();
         }
     })
-
-    window.addEventListener('scroll', function(event) {
-        if (document.documentElement.scrollTop || document.body.scrollTop >= scrollDistance) {
-            animatePoints(pointsArray);
-        }
-    });
 });
